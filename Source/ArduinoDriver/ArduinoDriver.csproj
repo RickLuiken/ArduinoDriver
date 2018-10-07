@@ -113,8 +113,8 @@
     <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.NanoR3.hex" />
     <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.Micro.hex" />
     <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.Leonardo.hex" />
+    <None Include="ArduinoListener\ArduinoListener.ino.ProMicro%28BACKUP%29.hex" />
     <None Include="ArduinoListener\ArduinoListener.ino.ProMicro.hex" />
-    <None Include="ArduinoListener\ArduinoListener_TLC5940.ino.promicro.hex" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

@@ -38,7 +38,7 @@ namespace ArduinoDriver
         private Func<SerialPortStream> serialFunc;
 
         private const string ArduinoListenerHexResourceFileName =
-            "ArduinoDriver.ArduinoListener.ArduinoListener_TLC5940.ino.{0}.hex";
+            "ArduinoDriver.ArduinoListener.ArduinoListener.ino.{0}.hex";
 
         /// <summary>
         /// Creates a new ArduinoDriver instance. The relevant portname will be autodetected if possible.
