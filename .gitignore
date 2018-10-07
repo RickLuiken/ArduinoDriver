@@ -4,3 +4,5 @@ bin
 obj
 packages
 .nuget/
+/.vs
+/Source/.vs/ArduinoDriver

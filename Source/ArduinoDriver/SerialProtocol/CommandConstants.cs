@@ -32,5 +32,12 @@
         public const byte ShiftOutAck               = 0x14;
         public const byte ShiftIn                   = 0x15;
         public const byte ShiftInAck                = 0x16;
+        //start of TLC requests
+        public const byte LedSet                    = 0x17;
+        public const byte LedSetAck                 = 0x18;
+        public const byte LedUpdate                 = 0x19;
+        public const byte LedUpdateAck              = 0x1a;
+        public const byte LedClear                  = 0x1b;
+        public const byte LedClearAck               = 0x1c;
     }
 }

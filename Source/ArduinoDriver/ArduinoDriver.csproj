@@ -32,12 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ArduinoUploader">
-      <HintPath>..\packages\ArduinoUploader.3.1.0\lib\net452\ArduinoUploader.dll</HintPath>
-    </Reference>
-    <Reference Include="IntelHexFormatReader, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ArduinoUploader, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\IntelHexFormatReader.2.2.1\lib\net452\IntelHexFormatReader.dll</HintPath>
+      <HintPath>..\..\..\ArduinoSketchUploader\Source\ArduinoUploader\bin\Debug\ArduinoUploader.dll</HintPath>
+    </Reference>
+    <Reference Include="IntelHexFormatReader">
+      <HintPath>..\..\..\ArduinoSketchUploader\Source\ArduinoUploader\bin\Debug\IntelHexFormatReader.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -80,6 +80,12 @@
     <Compile Include="SerialProtocol\ErrorResponse.cs" />
     <Compile Include="SerialProtocol\HandShakeRequest.cs" />
     <Compile Include="SerialProtocol\HandShakeResponse.cs" />
+    <Compile Include="SerialProtocol\LedClearRequest.cs" />
+    <Compile Include="SerialProtocol\LedClearResponse.cs" />
+    <Compile Include="SerialProtocol\LedSetRequest.cs" />
+    <Compile Include="SerialProtocol\LedSetResponse.cs" />
+    <Compile Include="SerialProtocol\LedUpdateRequest.cs" />
+    <Compile Include="SerialProtocol\LedUpdateResponse.cs" />
     <Compile Include="SerialProtocol\NoToneRequest.cs" />
     <Compile Include="SerialProtocol\NoToneResponse.cs" />
     <Compile Include="SerialProtocol\PinMode.cs" />
@@ -107,7 +113,10 @@
     <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.NanoR3.hex" />
     <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.Micro.hex" />
     <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.Leonardo.hex" />
-    <None Include="packages.config" />
+    <None Include="ArduinoListener\ArduinoListener.ino.ProMicro.hex" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
