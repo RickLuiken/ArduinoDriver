@@ -1,6 +1,6 @@
 ﻿namespace ArduinoDriver.SerialProtocol
 {
-    class LedSetResponse : ArduinoResponse
+    public class LedSetResponse : ArduinoResponse
     {
         public int tlcPinWritten { get; private set; }
         public int valueWritten { get; private set; }

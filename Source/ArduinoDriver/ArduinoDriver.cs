@@ -38,7 +38,7 @@ namespace ArduinoDriver
         private Func<SerialPortStream> serialFunc;
 
         private const string ArduinoListenerHexResourceFileName =
-            "ArduinoDriver.ArduinoListener.ArduinoListener.ino.{0}.hex";
+            "ArduinoDriver.ArduinoListener.ArduinoListener_TLC5940.ino.{0}.hex";
 
         /// <summary>
         /// Creates a new ArduinoDriver instance. The relevant portname will be autodetected if possible.
@@ -188,6 +188,36 @@ namespace ArduinoDriver
         public ShiftInResponse Send(ShiftInRequest request)
         {
             return (ShiftInResponse) InternalSend(request);
+        }
+
+        /// <summary>
+        /// Sends a TLC5940 set Request to the Arduino;
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns>pin written to and analog value</returns>
+        public LedSetResponse Send(LedSetRequest request)
+        {
+            return (LedSetResponse) InternalSend(request);
+        }
+
+        /// <summary>
+        /// Sends a TLC5940 update Request to the Arduino;
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public LedUpdateResponse Send(LedUpdateRequest request)
+        {
+            return (LedUpdateResponse) InternalSend(request);
+        }
+
+        /// <summary>
+        /// Sends a TLC5940 clear Request to the arduino;
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public LedClearResponse Send(LedClearRequest request)
+        {
+            return (LedClearResponse) InternalSend(request);
         }
 
         /// <summary>

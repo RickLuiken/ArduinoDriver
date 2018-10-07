@@ -285,24 +285,26 @@ void loop() {
     //Start of TLC cases
     case CMD_LEDSET:
       tlcPinToWrite = data[2];
-      analogValue = (data[3] << 2) + data[3];
+      analogValue = (data[3] << 4) + data[4];
       Tlc.set(tlcPinToWrite, analogValue);
       Serial.write(START_OF_RESPONSE_MARKER);
       Serial.write(2);
       Serial.write(ACK_LEDSET);
       Serial.write(tlcPinToWrite); //tlc pin which the value was assigned to
+      Serial.write(data[3]);
+      Serial.write(data[4]); //12 bit value to be written
       Serial.flush();
       break;
     case CMD_LEDUPDATE:
       Tlc.update();
-      Serial.write(START_OF_RESPONSE_HEADER);
+      Serial.write(START_OF_RESPONSE_MARKER);
       Serial.write(1);
       Serial.write(ACK_LEDUPDATE);
       Serial.flush();
       break;
     case CMD_LEDCLEAR:
       Tlc.clear();
-      Serial.write(START_OF_RESPONSE_HEADER);
+      Serial.write(START_OF_RESPONSE_MARKER);
       Serial.write(1);
       Serial.write(ACK_LEDCLEAR);
       Serial.flush();

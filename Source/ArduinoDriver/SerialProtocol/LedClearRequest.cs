@@ -1,6 +1,6 @@
 ﻿namespace ArduinoDriver.SerialProtocol
 {
-    class LedClearRequest : ArduinoRequest
+    public class LedClearRequest : ArduinoRequest
     {
         public LedClearRequest()
             :base(CommandConstants.LedClear)

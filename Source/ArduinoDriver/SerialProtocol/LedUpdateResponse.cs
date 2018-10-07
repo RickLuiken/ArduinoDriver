@@ -1,6 +1,6 @@
 ﻿namespace ArduinoDriver.SerialProtocol
 {
-    class LedUpdateResponse : ArduinoResponse
+    public class LedUpdateResponse : ArduinoResponse
     {
     }
 }
