@@ -1,8 +1,13 @@
+
+
 /*
  *
  * ArduinoLibCSharp ArduinoDriver Serial Protocol - Arduino Listener.
  * Version 1.2.
  */
+
+//Import TLC5940 library
+#include "Tlc5940.h"
 
 const long BAUD_RATE = 115200;
 const unsigned int SYNC_TIMEOUT = 250;
@@ -42,6 +47,16 @@ const byte ACK_SHIFTOUT               = 0x14;
 const byte CMD_SHIFTIN                = 0x15;
 const byte ACK_SHIFTIN                = 0x16;
 
+//TLC5940 commands
+
+const byte CMD_LEDSET                 = 0x17;
+const byte ACK_LEDSET                 = 0x18;
+const byte CMD_LEDUPDATE              = 0x19;
+const byte ACK_LEDUPDATE              = 0x1a;
+const byte CMD_LEDCLEAR               = 0x1b;
+const byte ACK_LEDCLEAR               = 0x1c;
+
+
 byte data[64];
 byte commandByte, lengthByte, syncByte, fletcherByte1, fletcherByte2;
 unsigned int fletcher16, f0, f1, c0, c1;
@@ -55,6 +70,8 @@ unsigned int analogPinToWrite;
 unsigned int analogPinValueToWrite;
 unsigned int analogReadResult;
 unsigned int analogReferenceType;
+unsigned int tlcPinToWrite;
+unsigned int analogValue;
 
 /* Tones */
 unsigned int toneFrequency;
@@ -67,6 +84,9 @@ byte shiftOutValue;
 byte incoming;
 
 void setup() {
+  //Setup TLC5940
+  Tlc.init();
+  
   Serial.begin(BAUD_RATE);
   while (!Serial) { ; }
 }
@@ -260,6 +280,33 @@ void loop() {
       Serial.write(clockPinToWrite);
       Serial.write(bitOrder);
       Serial.write(incoming);
+      Serial.flush();
+      break;
+    //Start of TLC cases
+    case CMD_LEDSET:
+      tlcPinToWrite = data[2];
+      analogValue = (data[3] << 4) + data[4];
+      Tlc.set(tlcPinToWrite, analogValue);
+      Serial.write(START_OF_RESPONSE_MARKER);
+      Serial.write(4);
+      Serial.write(ACK_LEDSET);
+      Serial.write(tlcPinToWrite); //tlc pin which the value was assigned to
+      Serial.write(data[3]);
+      Serial.write(data[4]); //12 bit value to be written
+      Serial.flush();
+      break;
+    case CMD_LEDUPDATE:
+      Tlc.update();
+      Serial.write(START_OF_RESPONSE_MARKER);
+      Serial.write(1);
+      Serial.write(ACK_LEDUPDATE);
+      Serial.flush();
+      break;
+    case CMD_LEDCLEAR:
+      Tlc.clear();
+      Serial.write(START_OF_RESPONSE_MARKER);
+      Serial.write(1);
+      Serial.write(ACK_LEDCLEAR);
       Serial.flush();
       break;
     default:

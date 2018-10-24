@@ -108,16 +108,14 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ArduinoListener\ArduinoListener.ino" />
-    <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.UnoR3.hex" />
-    <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.Mega2560.hex" />
-    <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.NanoR3.hex" />
-    <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.Micro.hex" />
-    <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.Leonardo.hex" />
-    <None Include="ArduinoListener\ArduinoListener.ino.ProMicro%28BACKUP%29.hex" />
-    <None Include="ArduinoListener\ArduinoListener.ino.ProMicro.hex" />
+    <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.ProMicro.hex" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ArduinoSketchUploader %28with Pro Micro support%29\ArduinoUploader.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,8 +6,8 @@
  * Version 1.2.
  */
 
- //Import TLC5940 library
- #include "Tlc5940.h"
+//Import TLC5940 library
+#include "Tlc5940.h"
 
 const long BAUD_RATE = 115200;
 const unsigned int SYNC_TIMEOUT = 250;
@@ -84,11 +84,11 @@ byte shiftOutValue;
 byte incoming;
 
 void setup() {
-  Serial.begin(BAUD_RATE);
-  while (!Serial) { ; }
-
   //Setup TLC5940
   Tlc.init();
+  
+  Serial.begin(BAUD_RATE);
+  while (!Serial) { ; }
 }
 
 void loop() {
@@ -288,7 +288,7 @@ void loop() {
       analogValue = (data[3] << 4) + data[4];
       Tlc.set(tlcPinToWrite, analogValue);
       Serial.write(START_OF_RESPONSE_MARKER);
-      Serial.write(2);
+      Serial.write(4);
       Serial.write(ACK_LEDSET);
       Serial.write(tlcPinToWrite); //tlc pin which the value was assigned to
       Serial.write(data[3]);

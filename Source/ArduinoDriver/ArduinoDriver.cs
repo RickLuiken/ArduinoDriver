@@ -364,6 +364,7 @@ namespace ArduinoDriver
             logger.Info("Deploying protocol version {0}.{1}.", CurrentProtocolMajorVersion, CurrentProtocolMinorVersion);
            
             logger.Debug("Reading internal resource stream with Arduino Listener HEX file...");
+            logger.Info(string.Format(ArduinoListenerHexResourceFileName, arduinoModel));
             var assembly = Assembly.GetExecutingAssembly();
             var textStream = assembly.GetManifestResourceStream(
                 string.Format(ArduinoListenerHexResourceFileName, arduinoModel));
